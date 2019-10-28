@@ -1,5 +1,6 @@
-package listeners;
+package com.HTMLEditor.listeners;
 
+import com.HTMLEditor.View;
 import com.javarush.task.task32.task3209.View;
 
 import javax.swing.*;

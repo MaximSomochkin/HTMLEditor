@@ -1,22 +1,26 @@
-import com.javarush.task.task32.task3209.listeners.FrameListener;
-import com.javarush.task.task32.task3209.listeners.TabbedPaneChangeListener;
-import com.javarush.task.task32.task3209.listeners.UndoListener;
+package com.HTMLEditor;
+
+import com.HTMLEditor.listeners.FrameListener;
+import com.HTMLEditor.listeners.TabbedPaneChangeListener;
+import com.HTMLEditor.listeners.UndoListener;
 
 import javax.swing.*;
 import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 
 public class View extends JFrame implements ActionListener {
 
-  private  Controller controller;
+    private  Controller controller;
 
-  private JTabbedPane tabbedPane = new JTabbedPane();
-  private JTextPane htmlTextPane = new JTextPane();
-   private JEditorPane plainTextPane = new JEditorPane();
-   private UndoManager undoManager= new UndoManager();
-   private UndoListener undoListener = new UndoListener(undoManager);
+    private JTabbedPane tabbedPane = new JTabbedPane();
+    private JTextPane htmlTextPane = new JTextPane();
+    private JEditorPane plainTextPane = new JEditorPane();
+    private UndoManager undoManager= new UndoManager();
+    private UndoListener undoListener = new UndoListener(undoManager);
 
     public UndoListener getUndoListener() {
         return undoListener;
@@ -46,15 +50,15 @@ public class View extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()){
             case "Новый": controller.createNewDocument();
-            break;
+                break;
             case "Открыть": controller.openDocument();
-            break;
+                break;
             case "Сохранить": controller.saveDocument();
-            break;
+                break;
             case "Сохранить как...": controller.saveDocumentAs();
-            break;
+                break;
             case "Выход": exit();
-            break;
+                break;
             case "О программе": showAbout();
         }
 
@@ -64,8 +68,8 @@ public class View extends JFrame implements ActionListener {
     public void init(){
         initGui();
         FrameListener frameListener = new FrameListener(this);
-       super.addWindowListener(frameListener);
-       super.setVisible(true);
+        super.addWindowListener(frameListener);
+        super.setVisible(true);
     }
 
     public void exit(){
@@ -111,7 +115,7 @@ public class View extends JFrame implements ActionListener {
         if (tabbedPane.getSelectedIndex()==0)
             controller.setPlainText(plainTextPane.getText());
         else if (tabbedPane.getSelectedIndex()==1)
-           plainTextPane.setText( controller.getPlainText());
+            plainTextPane.setText( controller.getPlainText());
 
         resetUndo();
 
@@ -145,13 +149,13 @@ public class View extends JFrame implements ActionListener {
         return tabbedPane.getSelectedIndex()==0;
     }
 
-   public void selectHtmlTab(){
+    public void selectHtmlTab(){
         tabbedPane.setSelectedIndex(0);
         this.resetUndo();
     }
 
     public void update(){
-       htmlTextPane.setDocument(controller.getDocument());
+        htmlTextPane.setDocument(controller.getDocument());
     }
 
     public void showAbout(){

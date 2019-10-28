@@ -1,4 +1,4 @@
-package actions;
+package com.HTMLEditor.actions;
 
 import javax.swing.*;
 import javax.swing.text.MutableAttributeSet;
@@ -7,21 +7,19 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledEditorKit;
 import java.awt.event.ActionEvent;
 
-public class SubscriptAction extends StyledEditorKit.StyledTextAction {
+public class StrikeThroughAction extends StyledEditorKit.StyledTextAction {
 
-    public SubscriptAction() {
-        super(StyleConstants.Subscript.toString());
+    public StrikeThroughAction() {
+        super(StyleConstants.StrikeThrough.toString());
     }
 
-    @Override
     public void actionPerformed(ActionEvent actionEvent) {
         JEditorPane editor = getEditor(actionEvent);
-        if (editor!=null){
+        if (editor != null) {
             MutableAttributeSet mutableAttributeSet = getStyledEditorKit(editor).getInputAttributes();
             SimpleAttributeSet simpleAttributeSet = new SimpleAttributeSet();
-            StyleConstants.setSubscript(simpleAttributeSet, !StyleConstants.isSubscript(mutableAttributeSet));
+            StyleConstants.setStrikeThrough(simpleAttributeSet, !StyleConstants.isStrikeThrough(mutableAttributeSet));
             setCharacterAttributes(editor, simpleAttributeSet, false);
         }
-
     }
 }

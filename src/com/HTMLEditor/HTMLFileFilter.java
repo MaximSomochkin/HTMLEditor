@@ -1,3 +1,5 @@
+package com.HTMLEditor;
+
 import javax.swing.filechooser.FileFilter;
 import java.io.File;
 
