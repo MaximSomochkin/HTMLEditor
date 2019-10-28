@@ -11,34 +11,34 @@ import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
-public class MenuHelper {
-    public static JMenuItem addMenuItem(JMenu parent, String text, ActionListener actionListener) {
+class MenuHelper {
+     private static JMenuItem addMenuItem(JMenu parent, String text, ActionListener actionListener) {
         JMenuItem menuItem = new JMenuItem(text);
         menuItem.addActionListener(actionListener);
         parent.add(menuItem);
         return menuItem;
     }
 
-    public static JMenuItem addMenuItem(JMenu parent, String text, Action action) {
+    private static JMenuItem addMenuItem(JMenu parent, String text, Action action) {
         JMenuItem menuItem = addMenuItem(parent, action);
         menuItem.setText(text);
         return menuItem;
     }
 
-    public static JMenuItem addMenuItem(JMenu parent, Action action) {
+    private static JMenuItem addMenuItem(JMenu parent, Action action) {
         JMenuItem menuItem = new JMenuItem(action);
         parent.add(menuItem);
         return menuItem;
     }
 
-    public static void initHelpMenu(View view, JMenuBar menuBar) {
+    static void initHelpMenu(View view, JMenuBar menuBar) {
         JMenu helpMenu = new JMenu("Помощь");
         menuBar.add(helpMenu);
 
         addMenuItem(helpMenu, "О программе", view);
     }
 
-    public static void initFontMenu(View view, JMenuBar menuBar) {
+    static void initFontMenu(View view, JMenuBar menuBar) {
         JMenu fontMenu = new JMenu("Шрифт");
         menuBar.add(fontMenu);
 
@@ -61,7 +61,7 @@ public class MenuHelper {
         fontMenu.addMenuListener(new TextEditMenuListener(view));
     }
 
-    public static void initColorMenu(View view, JMenuBar menuBar) {
+     static void initColorMenu(View view, JMenuBar menuBar) {
         JMenu colorMenu = new JMenu("Цвет");
         menuBar.add(colorMenu);
 
@@ -77,7 +77,7 @@ public class MenuHelper {
         colorMenu.addMenuListener(new TextEditMenuListener(view));
     }
 
-    public static void initAlignMenu(View view, JMenuBar menuBar) {
+    static void initAlignMenu(View view, JMenuBar menuBar) {
         JMenu alignMenu = new JMenu("Выравнивание");
         menuBar.add(alignMenu);
 
@@ -88,7 +88,7 @@ public class MenuHelper {
         alignMenu.addMenuListener(new TextEditMenuListener(view));
     }
 
-    public static void initStyleMenu(View view, JMenuBar menuBar) {
+     static void initStyleMenu(View view, JMenuBar menuBar) {
         JMenu styleMenu = new JMenu("Стиль");
         menuBar.add(styleMenu);
 
@@ -105,7 +105,7 @@ public class MenuHelper {
         styleMenu.addMenuListener(new TextEditMenuListener(view));
     }
 
-    public static void initEditMenu(View view, JMenuBar menuBar) {
+     static void initEditMenu(View view, JMenuBar menuBar) {
         JMenu editMenu = new JMenu("Редактировать");
         menuBar.add(editMenu);
 
@@ -118,7 +118,7 @@ public class MenuHelper {
         editMenu.addMenuListener(new UndoMenuListener(view, undoItem, redoItem));
     }
 
-    public static void initFileMenu(View view, JMenuBar menuBar) {
+     static void initFileMenu(View view, JMenuBar menuBar) {
         JMenu fileMenu = new JMenu("Файл");
         menuBar.add(fileMenu);
 
